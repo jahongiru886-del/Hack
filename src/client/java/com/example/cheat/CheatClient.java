@@ -11,7 +11,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.ChunkPos;
@@ -91,7 +90,6 @@ public class CheatClient implements ClientModInitializer {
         }
         if (killAura && p.getAttackStrengthScale(0f) >= 1.0f) {
             mc.gameMode.attack(p, best);
-            p.swing(InteractionHand.MAIN_HAND);
         }
     }
 
@@ -126,4 +124,4 @@ public class CheatClient implements ClientModInitializer {
     private static void msg(FabricClientCommandSource src, String s) {
         src.sendFeedback(Component.literal("[Cheat] " + s));
     }
-                                }
+                }
