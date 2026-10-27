@@ -14,7 +14,6 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Items;
@@ -262,11 +261,13 @@ public class CheatClient implements ClientModInitializer {
     }
 
     private static String oreName(BlockState s) {
-        if (s.is(BlockTags.DIAMOND_ORES)) return "Olmos";
-        if (s.is(BlockTags.EMERALD_ORES)) return "Zumrad";
-        if (s.is(BlockTags.GOLD_ORES)) return "Oltin";
-        if (s.is(BlockTags.IRON_ORES)) return "Temir";
-        if (s.is(Blocks.ANCIENT_DEBRIS)) return "Ancient debris";
+        var b = s.getBlock();
+        if (b == Blocks.DIAMOND_ORE || b == Blocks.DEEPSLATE_DIAMOND_ORE) return "Olmos";
+        if (b == Blocks.EMERALD_ORE || b == Blocks.DEEPSLATE_EMERALD_ORE) return "Zumrad";
+        if (b == Blocks.GOLD_ORE || b == Blocks.DEEPSLATE_GOLD_ORE
+                || b == Blocks.NETHER_GOLD_ORE) return "Oltin";
+        if (b == Blocks.IRON_ORE || b == Blocks.DEEPSLATE_IRON_ORE) return "Temir";
+        if (b == Blocks.ANCIENT_DEBRIS) return "Ancient debris";
         return null;
     }
 
@@ -387,4 +388,4 @@ public class CheatClient implements ClientModInitializer {
             return false;
         }
     }
-                        }
+    }
